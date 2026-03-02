@@ -7,7 +7,7 @@ export default function Home() {
       <div className="text-center">
         <h1 className="font-bold text-2xl">Welcome to Our App</h1>
         <Button asChild size={"lg"}>
-          <Link href="/login" className="mt-4 inline-block text-blue-600">
+          <Link href="/auth/login" className="mt-4 inline-block text-blue-600">
             Sign In / Sign Up
           </Link>
         </Button>
