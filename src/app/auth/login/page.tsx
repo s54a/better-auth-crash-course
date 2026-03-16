@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SignInTab } from "./_component/signInTab";
@@ -5,7 +7,7 @@ import { SignUpTab } from "./_component/signUpTab";
 
 export default function LoginPage() {
   return (
-    <Tabs defaultValue="signin" className="mx-auto w-full my-6 px-4">
+    <Tabs defaultValue="signin" className="mx-auto my-6 w-full px-4">
       <TabsList>
         <TabsTrigger value="signin">Sign In</TabsTrigger>
         <TabsTrigger value="signup">Sign Up</TabsTrigger>
@@ -13,10 +15,9 @@ export default function LoginPage() {
 
       <TabsContent value="signin">
         <Card>
-          <CardHeader className="text-xl font-bold">
+          <CardHeader className="text-2xl font-bold">
             <CardTitle>Sign In</CardTitle>
           </CardHeader>
-
           <CardContent>
             <SignInTab />
           </CardContent>
@@ -25,7 +26,7 @@ export default function LoginPage() {
 
       <TabsContent value="signup">
         <Card>
-          <CardHeader className="text-xl font-bold">
+          <CardHeader className="text-2xl font-bold">
             <CardTitle>Sign Up</CardTitle>
           </CardHeader>
 
