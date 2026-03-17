@@ -8,7 +8,7 @@ import { SignUpTab } from "./_component/signUpTab";
 export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <Tabs defaultValue="signin" className="w-full max-w-3xl px-4">
+      <Tabs defaultValue="signin" className="w-full max-w-lg px-4">
         <TabsList className="mx-auto">
           <TabsTrigger value="signin">Sign In</TabsTrigger>
           <TabsTrigger value="signup">Sign Up</TabsTrigger>
