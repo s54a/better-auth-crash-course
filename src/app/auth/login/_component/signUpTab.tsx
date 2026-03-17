@@ -36,8 +36,8 @@ export function SignUpTab() {
 
   const { isSubmitting } = form.formState;
 
-  function handleSignUp(data: SignUpForm) {
-    console.log(data);
+  async function handleSignUp(data: SignUpForm) {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   return (
