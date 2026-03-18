@@ -1,9 +1,17 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SignInTab } from "./_component/signInTab";
 import { SignUpTab } from "./_component/signUpTab";
+import { SocialAuthButtons } from "./_component/socialAuthButtons";
+import { Separator } from "@/components/ui/separator";
 
 export default function LoginPage() {
   return (
@@ -22,6 +30,12 @@ export default function LoginPage() {
             <CardContent>
               <SignInTab />
             </CardContent>
+
+            <Separator />
+
+            <CardFooter className="grid grid-cols-3 gap-3">
+              <SocialAuthButtons />
+            </CardFooter>
           </Card>
         </TabsContent>
 
@@ -34,6 +48,12 @@ export default function LoginPage() {
             <CardContent>
               <SignUpTab />
             </CardContent>
+
+            <Separator />
+
+            <CardFooter className="grid grid-cols-2 gap-3">
+              <SocialAuthButtons />
+            </CardFooter>
           </Card>
         </TabsContent>
       </Tabs>
