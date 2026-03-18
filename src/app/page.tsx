@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import { BetterAuthActionButton } from "./auth/login/_component/auth/betterAuthActionButton";
 
 export default function Home() {
   const { data: session, isPending: loading } = authClient.useSession();
@@ -35,13 +36,14 @@ export default function Home() {
         ) : (
           <>
             <h1 className="text-3xl font-bold">Welcome {session.user.name}!</h1>
-            <Button
+            <BetterAuthActionButton
               size={"lg"}
               variant={"destructive"}
-              onClick={() => authClient.signOut()}
+              successMessage="Signed out Successfully"
+              action={() => authClient.signOut()}
             >
               Sign Out
-            </Button>
+            </BetterAuthActionButton>
           </>
         )}
       </div>
