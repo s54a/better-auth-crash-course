@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import z from "zod";
+import z, { email } from "zod";
 import {
   Form,
   FormControl,
@@ -26,7 +26,11 @@ const signUpSchema = z.object({
 
 type SignInForm = z.infer<typeof signUpSchema>;
 
-export function SignInTab() {
+export function SignInTab({
+  openEmailVerificationTab,
+}: {
+  openEmailVerificationTab: (email: string) => void;
+}) {
   const router = useRouter();
 
   const form = useForm<SignInForm>({
@@ -40,11 +44,14 @@ export function SignInTab() {
   const { isSubmitting } = form.formState;
 
   async function handleSignIn(data: SignInForm) {
-    await authClient.signIn.email(
+    const res = await authClient.signIn.email(
       { ...data, callbackURL: "/" },
       {
         onError: (error) => {
-          toast.error(error.error.message ?? "Failed to sign up");
+          if (error.error.code === "EMAIL_NOT_VERIFIED") {
+            openEmailVerificationTab(data.email);
+          }
+          toast.error(error.error.message ?? "Failed to sign in");
         },
         onSuccess: () => {
           router.push("/");
