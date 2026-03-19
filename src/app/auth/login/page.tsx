@@ -62,7 +62,7 @@ export default function LoginPage() {
 
             <Separator />
 
-            <CardFooter className="grid grid-cols-2 gap-3">
+            <CardFooter className="grid grid-cols-3 gap-3">
               <SocialAuthButtons />
             </CardFooter>
           </Card>

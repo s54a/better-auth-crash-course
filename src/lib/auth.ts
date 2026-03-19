@@ -1,11 +1,24 @@
-import { betterAuth } from "better-auth";
+import { betterAuth, email } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "@/drizzle/db";
 import { nextCookies } from "better-auth/next-js";
+import { sendPasswordResetEmail } from "./emails/sendPasswordResetEmail";
+import { sendEmailVerificationEmail } from "./emails/sendEmailVerificationEmail";
 
 export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
+    requireEmailVerification: true,
+    sendResetPassword: async ({ user, url }) => {
+      await sendPasswordResetEmail({ user, url });
+    },
+  },
+  emailVerification: {
+    autoSignInAfterVerification: true,
+    sendOnSignUp: true,
+    sendVerificationEmail: async ({ user, url }) => {
+      await sendEmailVerificationEmail({ user, url });
+    },
   },
   socialProviders: {
     github: {
