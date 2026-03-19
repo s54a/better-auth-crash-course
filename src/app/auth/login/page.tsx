@@ -12,8 +12,19 @@ import { SignInTab } from "./_component/signInTab";
 import { SignUpTab } from "./_component/signUpTab";
 import { SocialAuthButtons } from "./_component/socialAuthButtons";
 import { Separator } from "@/components/ui/separator";
+import { useEffect } from "react";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    authClient.getSession().then((session) => {
+      if (session.data != null) router.push("/");
+    });
+  }, [router]);
+
   return (
     <div className="flex min-h-screen items-center justify-center">
       <Tabs defaultValue="signin" className="w-full max-w-lg px-4">
