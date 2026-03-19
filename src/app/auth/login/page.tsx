@@ -40,7 +40,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <Tabs
-        defaultValue={selectedTab}
+        value={selectedTab}
         onValueChange={(t) => setSelectedTab(t as Tab)}
         className="w-full max-w-lg px-4"
       >
