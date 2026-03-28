@@ -24,8 +24,6 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [selectedTab, setSelectedTab] = useState<Tab>("signin");
 
-  console.log(selectedTab);
-
   useEffect(() => {
     authClient.getSession().then((session) => {
       if (session.data != null) router.push("/");
