@@ -1,3 +1,5 @@
+"use client";
+
 import { authClient } from "@/lib/auth-client";
 import { BetterAuthActionButton } from "./auth/betterAuthActionButton";
 import { useEffect, useRef, useState } from "react";

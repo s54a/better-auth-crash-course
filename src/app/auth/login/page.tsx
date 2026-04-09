@@ -10,6 +10,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SignInTab } from "./_component/signInTab";
 import { SignUpTab } from "./_component/signUpTab";
+import { ForgotPassword } from "./_component/forgotPassword";
 import { SocialAuthButtons } from "./_component/socialAuthButtons";
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
@@ -17,7 +18,7 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { EmailVerification } from "./_component/emailVerification";
 
-type Tab = "signin" | "signup" | "email-verification";
+type Tab = "signin" | "signup" | "email-verification" | "forgot-password";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -55,7 +56,10 @@ export default function LoginPage() {
               <CardTitle>Sign In</CardTitle>
             </CardHeader>
             <CardContent>
-              <SignInTab openEmailVerificationTab={openEmailVerificationTab} />
+              <SignInTab
+                openEmailVerificationTab={openEmailVerificationTab}
+                openForgotPasswordTab={() => setSelectedTab("forgot-password")}
+              />
             </CardContent>
 
             <Separator />
@@ -92,6 +96,18 @@ export default function LoginPage() {
 
             <CardContent>
               <EmailVerification email={email} />
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="forgot-password">
+          <Card>
+            <CardHeader className="text-2xl font-bold">
+              <CardTitle>Forgot Password</CardTitle>
+            </CardHeader>
+
+            <CardContent>
+              <ForgotPassword openSignInTab={() => setSelectedTab("signin")} />
             </CardContent>
           </Card>
         </TabsContent>
